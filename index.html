@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Plan Tracker</title>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">P</div>
+
+            <div>
+                <div class="logo-title">
+                    Plan Tracker
+                </div>
+
+                <div class="logo-subtitle">
+                    Personal workspace
+                </div>
+            </div>
+        </div>
+
+
+        <nav class="navigation">
+
+            <button
+                class="nav-item active"
+                data-view="dashboard"
+            >
+                <span>▦</span>
+                Dashboard
+            </button>
+
+            <button
+                class="nav-item"
+                data-view="habits"
+            >
+                <span>✓</span>
+                Habits
+            </button>
+
+            <button
+                class="nav-item"
+                data-view="calendar"
+            >
+                <span>□</span>
+                Calendar
+            </button>
+
+            <button
+                class="nav-item"
+                data-view="finance"
+            >
+               <span>£</span>
+                Finance
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-section">
+
+            <div class="sidebar-label">
+                WORKSPACE
+            </div>
+
+            <button
+                class="sidebar-action"
+                id="exportButton"
+            >
+                <span>↗</span>
+                Export data
+            </button>
+
+            <button
+                class="sidebar-action"
+                id="importButton"
+            >
+                <span>↙</span>
+                Import data
+            </button>
+
+            <input
+                type="file"
+                id="importFile"
+                accept=".json"
+                hidden
+            >
+
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                class="sidebar-action"
+                id="themeButton"
+            >
+                <span id="themeIcon">☀</span>
+                Toggle theme
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+        <div
+        class="mobile-overlay"
+        id="mobileOverlay"
+    ></div>
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <button
+                class="mobile-menu"
+                id="mobileMenu"
+            >
+                ☰
+            </button>
+
+            <div class="breadcrumbs">
+                <span>Workspace</span>
+                <span>/</span>
+                <strong>Plan Tracker</strong>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button
+                    class="icon-button"
+                    title="Search"
+                    id="searchButton"
+                >
+                    ⌕
+                </button>
+
+                <button
+                    class="icon-button"
+                    title="Add task"
+                    id="topAddTask"
+                >
+                    +
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+
+        <div class="content">
+
+            <section class="page-header">
+
+                <div>
+
+                    <div class="eyebrow">
+                        DAILY SYSTEM
+                    </div>
+
+                    <h1>
+                        My Daily Plan
+                    </h1>
+
+                    <p>
+                        Track your habits and build consistency.
+                    </p>
+
+                </div>
+
+
+                <div class="date-control">
+
+                    <button
+                        class="secondary-button"
+                        id="previousMonth"
+                    >
+                        ←
+                    </button>
+
+                    <div id="monthLabel">
+                        August 2026
+                    </div>
+
+                    <button
+                        class="secondary-button"
+                        id="nextMonth"
+                    >
+                        →
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- STATISTICS -->
+
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <div class="stat-label">
+                            Tasks
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="taskCount"
+                        >
+                            0
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        %
+                    </div>
+
+                    <div>
+
+                        <div class="stat-label">
+                            Overall progress
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="overallProgress"
+                        >
+                            0%
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        🔥
+                    </div>
+
+                    <div>
+
+                        <div class="stat-label">
+                            Current streak
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="streakValue"
+                        >
+                            0 days
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        ●
+                    </div>
+
+                    <div>
+
+                        <div class="stat-label">
+                            Completed today
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="todayProgress"
+                        >
+                            0%
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TRACKER -->
+
+            <section class="tracker-card">
+
+                <div class="tracker-header">
+
+                    <div>
+
+                        <h2>
+                            Habit Tracker
+                        </h2>
+
+                        <p>
+                            Your daily consistency
+                        </p>
+
+                    </div>
+
+
+                    <div class="tracker-actions">
+
+                        <select
+                            id="daysSelect"
+                            class="select"
+                        >
+                            <option value="7">
+                                7 days
+                            </option>
+
+                            <option value="14">
+                                14 days
+                            </option>
+
+                            <option value="30" selected>
+                                30 days
+                            </option>
+
+                            <option value="31">
+                                31 days
+                            </option>
+                        </select>
+
+
+                        <button
+                            class="primary-button"
+                            id="addTaskButton"
+                        >
+                            + Add habit
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table id="trackerTable">
+
+                        <thead id="tableHead"></thead>
+
+                        <tbody id="tableBody"></tbody>
+
+                    </table>
+
+
+                    <div
+                        class="empty-state"
+                        id="emptyState"
+                    >
+
+                        <div class="empty-icon">
+                            ✦
+                        </div>
+
+                        <h3>
+                            Your workspace is empty
+                        </h3>
+
+                        <p>
+                            Add your first habit to start
+                            tracking your progress.
+                        </p>
+
+                        <button
+                            class="primary-button"
+                            id="emptyAddButton"
+                        >
+                            + Create first habit
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+            <section
+            class="calendar-view"
+            id="calendarView"
+            style="display: none;"
+        >
+        
+            <div class="calendar-header">
+        
+                <div>
+                    <div class="eyebrow">
+                        MONTHLY OVERVIEW
+                    </div>
+        
+                    <h2 id="calendarMonth">
+                        August 2026
+                    </h2>
+        
+                    <p>
+                        Your daily progress at a glance.
+                    </p>
+                </div>
+        
+                <div class="calendar-controls">
+        
+                    <button
+                        class="secondary-button"
+                        id="calendarPrevious"
+                    >
+                        ←
+                    </button>
+        
+                    <button
+                        class="today-button"
+                        id="calendarToday"
+                    >
+                        Today
+                    </button>
+        
+                    <button
+                        class="secondary-button"
+                        id="calendarNext"
+                    >
+                        →
+                    </button>
+        
+                </div>
+        
+            </div>
+        
+        
+            <div class="calendar-layout">
+        
+                <div class="calendar-card">
+        
+                    <div class="calendar-weekdays">
+        
+                        <div>MON</div>
+                        <div>TUE</div>
+                        <div>WED</div>
+                        <div>THU</div>
+                        <div>FRI</div>
+                        <div>SAT</div>
+                        <div>SUN</div>
+        
+                    </div>
+        
+        
+                    <div
+                        class="calendar-grid"
+                        id="calendarGrid"
+                    ></div>
+        
+                </div>
+        
+        
+                <aside
+                    class="calendar-details"
+                    id="calendarDetails"
+                >
+        
+                    <div class="details-empty">
+        
+                        <div class="empty-icon">
+                            ◈
+                        </div>
+        
+                        <h3>
+                            Select a day
+                        </h3>
+        
+                        <p>
+                            Click a date to see your progress.
+                        </p>
+        
+                    </div>
+        
+                </aside>
+        
+            </div>
+        
+        </section>    
+        
+           <!-- ========================================
+     FINANCE VIEW
+======================================== -->
+
+<section
+class="finance-view"
+id="financeView"
+style="display: none;"
+>
+
+<!-- HEADER -->
+
+<div class="finance-header">
+
+    <div>
+
+        <div class="eyebrow">
+            PERSONAL FINANCE
+        </div>
+
+        <h1>
+            Finance
+        </h1>
+
+        <p>
+            Track your income, expenses and savings.
+        </p>
+
+    </div>
+
+
+    <button
+        class="primary-button"
+        id="openTransactionModal"
+    >
+        + Add transaction
+    </button>
+
+</div>
+
+
+<!-- FINANCE STATS -->
+
+<div class="finance-stats">
+
+    <!-- BALANCE -->
+
+    <div class="finance-card">
+
+        <div class="finance-card-label">
+            Balance
+        </div>
+
+        <div
+            class="finance-card-value"
+            id="financeBalance"
+        >
+            £0.00
+        </div>
+
+    </div>
+
+
+    <!-- INCOME -->
+
+    <div class="finance-card">
+
+        <div class="finance-card-label">
+            Income
+        </div>
+
+        <div
+            class="finance-card-value income"
+            id="financeIncome"
+        >
+            £0.00
+        </div>
+
+    </div>
+
+
+    <!-- EXPENSES -->
+
+    <div class="finance-card">
+
+        <div class="finance-card-label">
+            Expenses
+        </div>
+
+        <div
+            class="finance-card-value expense"
+            id="financeExpenses"
+        >
+            £0.00
+        </div>
+
+    </div>
+
+
+    <!-- SAVINGS -->
+
+    <div class="finance-card">
+
+        <div class="finance-card-label">
+            Savings
+        </div>
+
+        <div
+            class="finance-card-value savings"
+            id="financeSavings"
+        >
+            £0.00
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TRANSACTIONS -->
+
+<div class="finance-transactions">
+
+    <div class="finance-section-header">
+
+        <div>
+
+            <h2>
+                Transactions
+            </h2>
+
+            <p>
+                Your recent financial activity
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- TABLE HEADER -->
+
+    <div class="transaction-list-header">
+
+        <span>
+            DATE
+        </span>
+
+        <span>
+            CATEGORY
+        </span>
+
+        <span>
+            DESCRIPTION
+        </span>
+
+        <span>
+            AMOUNT
+        </span>
+
+        <span></span>
+
+    </div>
+
+
+    <!-- TRANSACTION LIST -->
+
+    <div
+        id="transactionList"
+        class="transaction-list"
+    ></div>
+
+
+    <!-- EMPTY STATE -->
+
+    <div
+        id="financeEmpty"
+        class="finance-empty"
+    >
+
+        <div class="empty-icon">
+            £
+        </div>
+
+        <h3>
+            No transactions yet
+        </h3>
+
+        <p>
+            Add your first income or expense.
+        </p>
+
+        <button
+            class="primary-button"
+            id="emptyTransactionButton"
+        >
+            + Add transaction
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ========================================
+ TRANSACTION MODAL
+======================================== -->
+
+<div
+class="modal-overlay"
+id="transactionModal"
+>
+
+<div class="transaction-modal">
+
+    <!-- MODAL HEADER -->
+
+    <div class="modal-header">
+
+        <div>
+
+            <h2>
+                Add transaction
+            </h2>
+
+            <p>
+                Record income or expense
+            </p>
+
+        </div>
+
+
+        <button
+            class="modal-close"
+            id="closeTransactionModal"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- FORM -->
+
+    <form
+        id="transactionForm"
+    >
+
+        <!-- TYPE -->
+
+        <div class="form-group">
+
+            <label>
+                Type
+            </label>
+
+
+            <div class="transaction-type">
+
+                <label class="type-option">
+
+                    <input
+                        type="radio"
+                        name="transactionType"
+                        value="income"
+                        checked
+                    >
+
+                    <span>
+                        Income
+                    </span>
+
+                </label>
+
+
+                <label class="type-option">
+
+                    <input
+                        type="radio"
+                        name="transactionType"
+                        value="expense"
+                    >
+
+                    <span>
+                        Expense
+                    </span>
+
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <!-- AMOUNT -->
+
+        <div class="form-group">
+
+            <label
+                for="transactionAmount"
+            >
+                Amount
+            </label>
+
+
+            <input
+                id="transactionAmount"
+                type="number"
+                step="0.01"
+                min="0"
+                placeholder="0.00"
+                required
+            >
+
+        </div>
+
+
+        <!-- CATEGORY -->
+
+        <div class="form-group">
+
+            <label
+                for="transactionCategory"
+            >
+                Category
+            </label>
+
+
+            <select
+                id="transactionCategory"
+                required
+            >
+
+                <option value="">
+                    Select category
+                </option>
+
+                <option value="Salary">
+                    Salary
+                </option>
+
+                <option value="Food">
+                    Food
+                </option>
+
+                <option value="Transport">
+                    Transport
+                </option>
+
+                <option value="Shopping">
+                    Shopping
+                </option>
+
+                <option value="Bills">
+                    Bills
+                </option>
+
+                <option value="Entertainment">
+                    Entertainment
+                </option>
+
+                <option value="Health">
+                    Health
+                </option>
+
+                <option value="Education">
+                    Education
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- DESCRIPTION -->
+
+        <div class="form-group">
+
+            <label
+                for="transactionDescription"
+            >
+                Description
+            </label>
+
+
+            <input
+                id="transactionDescription"
+                type="text"
+                placeholder="e.g. Tesco groceries"
+                maxlength="80"
+                required
+                  >
+
+                 </div>
+ 
+
+                  <!-- DATE -->
+
+                  <div class="form-group">
+
+                  <label
+                   for="transactionDate"
+                  >
+                   Date
+                  </label>
+
+
+                 <input
+                   id="transactionDate"
+                  type="date"
+                   required
+                 >
+
+                 </div>
+
+
+                   <!-- SUBMIT -->
+
+                  <button
+                     type="submit"
+                      class="primary-button modal-submit"
+                     >
+                      Add transaction
+                    </button>
+
+                 </form>
+
+              </div>
+
+            </div>
+
+
+            <!-- FOOTER -->
+
+            <footer class="app-footer">
+
+                <span>
+                    Plan Tracker
+                </span>
+
+                <span class="saved">
+                    <span class="saved-dot"></span>
+                    Saved locally
+                </span>
+
+            </footer>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="js/utils.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/statistics.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/tracker.js"></script>
+<script src="js/calendar.js"></script>
+<script src="js/finance.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

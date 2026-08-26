@@ -1,0 +1,777 @@
+@media (max-width: 1000px) {
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .sidebar {
+        transform: translateX(-100%);
+
+        transition: transform 0.25s ease;
+    }
+
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+
+    .main {
+        margin-left: 0;
+
+        width: 100%;
+    }
+
+
+    .mobile-menu {
+        display: block;
+    }
+
+
+    .topbar {
+        padding: 0 16px;
+
+        gap: 12px;
+    }
+
+
+    .breadcrumbs {
+        flex: 1;
+    }
+
+
+    .content {
+        padding: 22px 14px;
+    }
+
+
+    .page-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .tracker-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .tracker-actions {
+        width: 100%;
+    }
+
+
+    .tracker-actions .select {
+        flex: 1;
+    }
+
+
+    .tracker-actions .primary-button {
+        flex: 1;
+    }
+
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .task-header,
+    .task-cell {
+        width: 220px;
+
+        min-width: 220px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .page-header h1 {
+        font-size: 24px;
+    }
+
+
+    .date-control {
+        width: 100%;
+
+        justify-content: space-between;
+    }
+
+
+    .tracker-actions {
+        flex-direction: column;
+    }
+
+
+    .tracker-actions .select,
+    .tracker-actions .primary-button {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 900px) {
+
+    .calendar-layout {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .calendar-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+
+    .calendar-controls {
+        width: 100%;
+
+        justify-content: space-between;
+    }
+
+
+    .calendar-day {
+        min-height: 75px;
+
+        padding: 7px;
+    }
+
+
+    .calendar-percentage {
+        margin-top: 12px;
+
+        font-size: 13px;
+    }
+
+
+    .calendar-progress {
+        left: 7px;
+
+        right: 7px;
+
+        bottom: 7px;
+    }
+
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1000px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* ========================================
+   MOBILE - MAIN
+======================================== */
+
+@media (max-width: 750px) {
+
+    /* ---------- Sidebar ---------- */
+
+    .sidebar {
+        width: 270px;
+
+        transform: translateX(-100%);
+
+        transition: transform 0.25s ease;
+
+        box-shadow:
+            12px 0 30px rgba(0, 0, 0, 0.25);
+    }
+
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+
+    /* ---------- Main ---------- */
+
+    .main {
+        margin-left: 0;
+
+        width: 100%;
+
+        min-width: 0;
+    }
+
+
+    /* ---------- Mobile menu ---------- */
+
+    .mobile-menu {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+    }
+
+
+    /* ---------- Topbar ---------- */
+
+    .topbar {
+        height: 58px;
+
+        padding: 0 14px;
+
+        gap: 10px;
+    }
+
+
+    .breadcrumbs {
+        min-width: 0;
+
+        overflow: hidden;
+
+        white-space: nowrap;
+
+        text-overflow: ellipsis;
+
+        flex: 1;
+    }
+
+
+    .breadcrumbs span:first-child {
+        display: none;
+    }
+
+
+    .breadcrumbs span:nth-child(2) {
+        display: none;
+    }
+
+
+    /* ---------- Content ---------- */
+
+    .content {
+        width: 100%;
+
+        padding: 20px 12px 30px;
+
+        overflow-x: hidden;
+    }
+
+
+    /* ---------- Page header ---------- */
+
+    .page-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 14px;
+    }
+
+
+    .page-header h1 {
+        font-size: 24px;
+    }
+
+
+    /* ---------- Stats ---------- */
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 8px;
+    }
+
+
+    .stat-card {
+        min-width: 0;
+
+        padding: 13px;
+
+        gap: 9px;
+    }
+
+
+    .stat-icon {
+        width: 32px;
+
+        min-width: 32px;
+
+        height: 32px;
+
+        font-size: 13px;
+    }
+
+
+    .stat-label {
+        font-size: 10px;
+    }
+
+
+    .stat-value {
+        font-size: 17px;
+    }
+
+
+    /* ---------- Tracker header ---------- */
+
+    .tracker-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 14px;
+    }
+
+
+    .tracker-actions {
+        width: 100%;
+
+        display: flex;
+
+        gap: 7px;
+    }
+
+
+    .tracker-actions .select {
+        flex: 1;
+
+        min-width: 0;
+    }
+
+
+    .tracker-actions .primary-button {
+        flex: 1;
+
+        min-width: 0;
+    }
+
+
+    /* ---------- Tracker horizontal scroll ---------- */
+
+    .table-container {
+        width: 100%;
+
+        max-width: 100%;
+
+        overflow-x: auto;
+
+        overflow-y: hidden;
+
+        -webkit-overflow-scrolling: touch;
+
+        scrollbar-width: thin;
+    }
+
+
+    #trackerTable {
+        min-width: max-content;
+
+        width: max-content;
+    }
+
+
+    /* ---------- Sticky task column ---------- */
+
+    .task-header,
+    .task-cell {
+        width: 190px;
+
+        min-width: 190px;
+
+        max-width: 190px;
+    }
+
+
+    .task-input {
+        font-size: 12px;
+
+        min-width: 0;
+    }
+
+
+    /* ---------- Checkbox ---------- */
+
+    .check-cell {
+        width: 54px;
+
+        min-width: 54px;
+
+        height: 58px;
+    }
+
+
+    .check-button {
+        width: 30px;
+
+        height: 30px;
+
+        border-radius: 8px;
+    }
+
+
+    .check-button.checked::after {
+        font-size: 15px;
+    }
+
+
+    /* ---------- Progress ---------- */
+
+    .progress-cell,
+    .progress-header {
+        width: 85px;
+
+        min-width: 85px;
+    }
+
+
+    /* ---------- Delete ---------- */
+
+    .delete-task {
+        opacity: 1;
+    }
+
+
+    /* ---------- Calendar ---------- */
+
+    .calendar-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .calendar-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 14px;
+    }
+
+
+    .calendar-controls {
+        width: 100%;
+
+        justify-content: space-between;
+    }
+
+
+    .calendar-card {
+        width: 100%;
+
+        overflow: hidden;
+    }
+
+
+    .calendar-weekdays div {
+        padding: 9px 3px;
+
+        font-size: 8px;
+    }
+
+
+    .calendar-day {
+        min-height: 82px;
+
+        padding: 7px;
+
+        overflow: hidden;
+    }
+
+
+    .calendar-percentage {
+        margin-top: 12px;
+
+        font-size: 13px;
+    }
+
+
+    .calendar-status {
+        font-size: 8px;
+
+        white-space: nowrap;
+    }
+
+
+    .calendar-progress {
+        left: 7px;
+
+        right: 7px;
+
+        bottom: 7px;
+    }
+
+
+    .calendar-details {
+        min-height: 250px;
+    }
+
+
+    /* ---------- Footer ---------- */
+
+    .app-footer {
+        gap: 10px;
+
+        flex-wrap: wrap;
+    }
+
+}
+
+
+/* ========================================
+   SMALL PHONES
+======================================== */
+
+@media (max-width: 500px) {
+
+    .content {
+        padding-left: 9px;
+
+        padding-right: 9px;
+    }
+
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .stat-card {
+        padding: 11px;
+    }
+
+
+    .stat-icon {
+        display: none;
+    }
+
+
+    .tracker-actions {
+        flex-direction: column;
+    }
+
+
+    .tracker-actions .select,
+    .tracker-actions .primary-button {
+        width: 100%;
+
+        flex: none;
+    }
+
+
+    .task-header,
+    .task-cell {
+        width: 175px;
+
+        min-width: 175px;
+
+        max-width: 175px;
+    }
+
+
+    .check-cell {
+        width: 52px;
+
+        min-width: 52px;
+    }
+
+
+    .calendar-day {
+        min-height: 68px;
+
+        padding: 6px;
+    }
+
+
+    .calendar-date {
+        font-size: 11px;
+    }
+
+
+    .calendar-percentage {
+        margin-top: 8px;
+
+        font-size: 11px;
+    }
+
+
+    .calendar-status {
+        display: none;
+    }
+
+}
+
+
+/* ========================================
+   VERY SMALL PHONES
+======================================== */
+
+@media (max-width: 380px) {
+
+    .topbar-actions {
+        gap: 4px;
+    }
+
+
+    .icon-button,
+    .mobile-menu {
+        width: 33px;
+
+        height: 33px;
+    }
+
+
+    .stats-grid {
+        gap: 6px;
+    }
+
+
+    .stat-value {
+        font-size: 15px;
+    }
+
+
+    .task-header,
+    .task-cell {
+        width: 155px;
+
+        min-width: 155px;
+
+        max-width: 155px;
+    }
+
+}
+
+/* ========================================
+   FINANCE MOBILE
+======================================== */
+
+@media (max-width: 900px) {
+
+    .finance-stats {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .transaction-list-header,
+    .transaction-row {
+        grid-template-columns:
+            90px
+            100px
+            minmax(130px, 1fr)
+            90px
+            30px;
+
+        gap: 8px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .finance-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .finance-header .primary-button {
+        width: 100%;
+    }
+
+
+    .finance-stats {
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 8px;
+    }
+
+
+    .finance-card {
+        padding: 13px;
+    }
+
+
+    .finance-card-value {
+        font-size: 18px;
+    }
+
+
+    .transaction-list-header {
+        display: none;
+    }
+
+
+    .transaction-row {
+        grid-template-columns:
+            1fr auto auto;
+
+        gap: 8px;
+
+        padding: 13px;
+    }
+
+
+    .transaction-date {
+        grid-column: 1 / -1;
+
+        font-size: 10px;
+    }
+
+
+    .transaction-description {
+        grid-column: 1;
+
+        grid-row: 2;
+    }
+
+
+    .transaction-category {
+        grid-column: 2;
+
+        grid-row: 2;
+    }
+
+
+    .transaction-amount {
+        grid-column: 3;
+
+        grid-row: 2;
+    }
+
+
+    .transaction-delete {
+        grid-column: 3;
+
+        grid-row: 1;
+        justify-self: end;
+    }
+
+}
